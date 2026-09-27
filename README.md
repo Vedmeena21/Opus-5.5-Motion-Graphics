@@ -1,8 +1,6 @@
 # Opus 5.5 Motion Graphics
 
-[![12 AI/ML book covers, each acting out its idea](motion-graphics/ai-ml-books.png)](motion-graphics/ai-ml-books.gif)
-
-Click the image to see it move.
+![12 AI/ML book covers, each acting out its idea](motion-graphics/ai-ml-books.gif)
 
 ## How to create one
 

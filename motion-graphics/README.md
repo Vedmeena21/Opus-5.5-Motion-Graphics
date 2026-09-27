@@ -1,8 +1,6 @@
 # Motion Graphics with Claude Code
 
-[![12 AI/ML book covers, each acting out its idea](ai-ml-books.png)](ai-ml-books.gif)
-
-Click the image to see it move.
+![12 AI/ML book covers, each acting out its idea](ai-ml-books.gif)
 
 One HTML file. SVG + JavaScript. Rendered to a GIF.
 
