@@ -41,25 +41,6 @@ Built with Opus 5.5 in Claude Code. Every cover is the real one. Each flips open
 
 Buy links and official code repos → [books/](books)
 
-## Caught in review
-
-- The reference image put an AI-made frog on Hands-On ML. The real cover is an orangutan.
-- Cover typos like "Learnig" and "Languge" were fixed.
-- Made-up labels like "layer 9, head 5" were cut. The Hands-On ML accuracy is computed live from the dots.
-
-## Repo map
-
-```
-motion-graphics/
-  ai-ml-books.html   open in Chrome, has Play / Pause
-  ai-ml-books.png    still frame
-  ai-ml-books.gif    the rendered loop
-  render.mjs         HTML → GIF + MP4
-  covers/            12 real covers
-books/
-  README.md          buy links + code repos
-```
-
 ---
 
 Made by [Ved Prakash Meena](https://www.linkedin.com/in/ved-prakash-meena/). Follow for more AI resources.
