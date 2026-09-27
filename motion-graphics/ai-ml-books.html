@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>12 AI/ML Books</title>
+<title>Opus 5.5 Techie Motion Graphics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500;700;800&display=swap">
@@ -26,10 +26,10 @@
   /* heading */
   .hd{position:absolute;left:0;top:26px;width:1080px;height:236px}
   .hd svg.frame{position:absolute;inset:0}
-  .hd h1{position:absolute;left:0;right:0;top:52px;margin:0;text-align:center;font-family:"Luckiest Guy","Archivo Black",Impact,sans-serif;font-weight:400;line-height:1;color:#141414}
-  .hd h1 .l1{display:block;font-size:92px;letter-spacing:.01em}
-  .hd h1 .l2{display:block;font-size:46px;letter-spacing:.02em;margin-top:6px}
-  .hd h1 .skip{position:relative;display:inline-block;color:#D2481F;transform-origin:50% 60%}
+  .hd h1{position:absolute;left:0;right:0;top:67px;margin:0;text-align:center;font-family:"Luckiest Guy","Archivo Black",Impact,sans-serif;font-weight:400;line-height:1;color:#141414}
+  .hd h1 .l1{display:block;font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-weight:900;font-stretch:88%;font-size:54px;letter-spacing:-.015em}
+  .hd h1 .l2{display:block;font-size:30px;letter-spacing:.04em;margin-top:16px;color:#3A3A3A}
+  .hd h1 .skip{position:relative;display:inline-block;margin-left:16px;color:#D2481F;transform-origin:50% 60%}
   .hd h1 .ch{display:inline-block;will-change:transform}
 
   /* books */
@@ -79,7 +79,7 @@
 <body>
 <div class="page">
 <div class="holder" id="holder">
-<div class="poster" id="poster" role="img" aria-label="12 AI/ML books no AI engineer should skip, each cover animated, by Ved Prakash Meena">
+<div class="poster" id="poster" role="img" aria-label="Opus 5.5 Techie Motion Graphics: 12 AI/ML books no AI engineer should skip, each cover animated, by Ved Prakash Meena">
 
   <header class="hd">
     <svg class="frame" viewBox="0 0 1080 236" aria-hidden="true">
@@ -93,7 +93,7 @@
       <circle id="spk5" cx="36" cy="70" r="5" fill="none" stroke="#141414" stroke-width="3"/>
       <path id="skipRing" d="M806 141c46-6 84 6 86 26 2 22-46 34-94 32-46-2-76-14-74-32 2-17 36-28 76-27 22 1 42 4 58 9" fill="none" stroke="#D2481F" stroke-width="4" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
     </svg>
-    <h1><span class="l1">12 AI/ML BOOKS</span><span class="l2">NO AI ENGINEER SHOULD <span class="skip">SKIP</span></span></h1>
+    <h1><span class="l1">Opus 5.5 Techie Motion Graphics</span><span class="l2">12 AI/ML BOOKS NO AI ENGINEER SHOULD <span class="skip">SKIP</span></span></h1>
   </header>
 
   <main class="grid">
@@ -351,16 +351,31 @@
 
   /* heading + footer share one choreography on a 4s beat, so they never sit still */
   const md = (x, m) => ((x % m) + m) % m;
+  // any word that is moving warms to Claude's coral, then settles back to its own colour
+  const CLAUDE = [217, 119, 87];   // #D97757
+  const rgb = el => getComputedStyle(el).color.match(/\d+/g).slice(0, 3).map(Number);
+  const warm = (el, base, p) => { const c = `rgb(${base.map((v, i) => Math.round(lerp(v, CLAUDE[i], p))).join(',')})`; if (el._c !== c) { el._c = c; el.style.color = c; } };
   const bump = (t, s, d = .36, P = 4) => { const u = md(t - s, P); return u < d ? Math.sin(Math.PI * u / d) : 0; };
   // a marker ring redraws once a loop: lifts off, then the pen draws it again (dasharray 1 1, pathLength 1)
   const mark = (el, t, at) => { const u = md(t - at, 8); el.style.opacity = u < .15 ? (1 - u / .15).toFixed(3) : 1; el.setAttribute('stroke-dashoffset', (u >= .15 && u < .85 ? 1 - E.io((u - .15) / .7) : 0).toFixed(4)); };
 
   /* hand-drawn boil: frame and marker rings redraw with a slight wobble, 5 times a second */
-  {
-    const vars = (el, amp, seed) => { const d0 = el.getAttribute('d'); return [0, 1, 2, 3].map(v => { let k = 0; return v ? d0.replace(/-?\d*\.?\d+/g, m => (+m + (hash(seed * 7717 + v * 1013 + k++) - .5) * 2 * amp).toFixed(1)) : d0; }); };
-    const B = [['#fr1', 1.4], ['#fr2', 1.2], ['#skipRing', 1], ['#nameRing', .9]].map(([q, a], i) => ({ el: $(q), V: vars($(q), a, i + 1) }));
-    def(t => { const v = Math.floor(t * 5 + 1e-6) % 4; B.forEach(b => { if (b.v !== v) { b.v = v; b.el.setAttribute('d', b.V[v]); } }); });
-  }
+  const vars = (el, amp, seed) => { const d0 = el.getAttribute('d'); return [0, 1, 2, 3].map(v => { let k = 0; return v ? d0.replace(/-?\d*\.?\d+/g, m => (+m + (hash(seed * 7717 + v * 1013 + k++) - .5) * 2 * amp).toFixed(1)) : d0; }); };
+  const B = [['#fr1', 1.4], ['#fr2', 1.2], ['#skipRing', 1], ['#nameRing', .9]].map(([q, a], i) => ({ el: $(q), V: vars($(q), a, i + 1) }));
+  def(t => { const v = Math.floor(t * 5 + 1e-6) % 4; B.forEach(b => { if (b.v !== v) { b.v = v; b.el.setAttribute('d', b.V[v]); } }); });
+
+  // the SKIP ring is redrawn to fit SKIP in the smaller subheading (path points rewritten, so the pen-dash still works)
+  const fitRing = () => {
+    const skip = $('.hd .skip'), ring = B[2].el, keep = skip.style.transform, d0 = B[2].V[0];
+    skip.style.transform = 'none'; ring.setAttribute('d', d0);
+    const bb = ring.getBBox(), hr = $('.hd').getBoundingClientRect(), mr = skip.getBoundingClientRect(), k = hr.width / 1080;
+    const X = (mr.left - hr.left) / k - 12, Y = (mr.top - hr.top) / k - 7, sx = (mr.width / k + 24) / bb.width, sy = (mr.height / k + 12) / bb.height;
+    const n = d0.match(/-?\d*\.?\d+/g).map(Number), f = v => v.toFixed(1);
+    let d = `M${f(X + (n[0] - bb.x) * sx)} ${f(Y + (n[1] - bb.y) * sy)}c`;
+    for (let i = 2; i < n.length; i += 2) d += `${i > 2 ? ' ' : ''}${f(n[i] * sx)} ${f(n[i + 1] * sy)}`;
+    ring.setAttribute('d', d); B[2].V = vars(ring, .8, 3); B[2].v = -1;
+    skip.style.transform = keep;
+  };
 
   /* heading: sparkles twinkle, speed lines whoosh, a wave runs through the title, SKIP gets re-marked */
   {
@@ -368,7 +383,9 @@
     const C = [[60, 54], [1012, 164], [50, 106], [1040, 112], [36, 70]];
     const l1 = $('.hd .l1'), chs = [], L1 = l1.textContent;
     l1.textContent = '';
-    [...L1].forEach(c => { if (c === ' ') l1.append(' '); else { const e = document.createElement('span'); e.className = 'ch'; e.textContent = c; l1.append(e); chs.push(e); } });
+    const words = [[]];
+    [...L1].forEach(c => { if (c === ' ') { l1.append(' '); words.push([]); } else { const e = document.createElement('span'); e.className = 'ch'; e.textContent = c; l1.append(e); chs.push(e); words[words.length - 1].push(e); } });
+    const titleBase = rgb(l1);
     def(t => {
       sp.forEach((e, i) => { const s = .75 + .35 * (.5 + .5 * Math.sin(2 * Math.PI * (t / 2 + i * .23))), r = 45 * Math.sin(2 * Math.PI * (t / 8 + i * .2)); e.setAttribute('transform', `translate(${C[i][0]} ${C[i][1]}) rotate(${r.toFixed(1)}) scale(${s.toFixed(3)}) translate(${-C[i][0]} ${-C[i][1]})`); });
       sl.forEach((e, k) => {
@@ -376,7 +393,8 @@
         const o = u < .15 ? 1 - E.out(u / .15) : u < .75 ? 0 : u < .9 ? -E.in((u - .75) / .15) : 1;
         e.setAttribute('stroke-dashoffset', o.toFixed(4));
       });
-      chs.forEach((e, j) => { const q = bump(t, j * .1, .45, 2); e.style.transform = `translateY(${(-10 * q).toFixed(2)}px) rotate(${(-5 * q).toFixed(2)}deg)`; });
+      chs.forEach((e, j) => { const q = bump(t, j * .1, .45, 2); e._q = q; e.style.transform = `translateY(${(-10 * q).toFixed(2)}px) rotate(${(-5 * q).toFixed(2)}deg)`; });
+      words.forEach(w => { const p = clamp(2.5 * Math.max(...w.map(e => e._q))); w.forEach(e => warm(e, titleBase, p)); });
       mark(ring, t, 7.2);
       const w = 4 * Math.sin(Math.PI * t);
       skip.style.transform = `rotate(${w.toFixed(2)}deg) scale(${(1 + .01 * Math.abs(w)).toFixed(3)})`;
@@ -632,14 +650,16 @@
 
   /* footer: a word wave runs 1 to n, follow line then help line, nonstop; the calendar books a slot every second */
   {
-    const L = $$('.ft .l .w'), R = $$('.ft .r .w'), ring = $('#nameRing'), phR = $('#phR');
+    const L = $$('.ft .l .w'), R = $$('.ft .r .w');
+    [...L, ...R].forEach(w => { if (w.tagName === 'SPAN' && !w.classList.contains('phw')) w._b = rgb(w); });
+    const ring = $('#nameRing'), phR = $('#phR');
     const calG = $('#calG'), calH = $('#calH'), calK = $('#calK'), calR = $$('#calR path');
     const CX = [10.5, 17, 23.5, 30], CY = [20.5, 26, 31.5];
     CY.forEach(y => CX.forEach(x => mk('rect', { x: x - 2.2, y: y - 1.8, width: 4.4, height: 3.6, rx: 1, fill: '#141414', 'fill-opacity': .22 }, calG)));
     const HOPS = [5, 2, 7, 9, 4, 11, 1, 10].map(i => [CX[i % 4], CY[Math.floor(i / 4)]]);
     def(t => {
-      L.forEach((w, j) => { if (j) w.style.transform = `translateY(${(-4 * bump(t, 1.65 + j * .08, .38, 2)).toFixed(2)}px)`; });
-      R.forEach((w, j) => { w.style.transform = `translateY(${(-4 * bump(t, .2 + j * .08, .38, 2)).toFixed(2)}px)`; });
+      L.forEach((w, j) => { if (!j) return; const q = bump(t, 1.65 + j * .08, .38, 2); w.style.transform = `translateY(${(-4 * q).toFixed(2)}px)`; warm(w, w._b, clamp(2.5 * q)); });
+      R.forEach((w, j) => { const q = bump(t, .2 + j * .08, .38, 2); w.style.transform = `translateY(${(-4 * q).toFixed(2)}px)`; if (w._b) warm(w, w._b, clamp(2.5 * q)); });
       // calendar: the booked day hops to a new date each second and gets a tick
       const k = Math.floor(md(t, 8)), u = md(t, 1), a = HOPS[(k + 7) % 8], b = HOPS[k], h = E.io(seg(u, 0, .28));
       calH.setAttribute('transform', `translate(${lerp(a[0], b[0], h).toFixed(2)} ${(lerp(a[1], b[1], h) - 4 * Math.sin(Math.PI * h)).toFixed(2)})`);
@@ -661,7 +681,7 @@
   fit(); addEventListener('resize', fit);
   window.__render = render; window.__ready = false;
   Promise.all([document.fonts.load('400 92px "Luckiest Guy"'), document.fonts.load('800 19px Archivo'), document.fonts.load('700 9px "JetBrains Mono"')])
-    .catch(() => {}).then(() => document.fonts.ready).then(() => { render(HERO); window.__ready = true; });
+    .catch(() => {}).then(() => document.fonts.ready).then(() => { fitRing(); render(HERO); window.__ready = true; });
   render(HERO);
   if (CAP) return;
   let playing = true, cur = HERO, base = performance.now() - HERO * 1000;
