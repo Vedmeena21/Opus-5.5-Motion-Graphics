@@ -1,2 +1,7 @@
 .DS_Store
 node_modules/
+
+# render outputs (see motion-graphics/README.md)
+motion-graphics/*.mp4
+motion-graphics/stills/
+motion-graphics/package*.json
