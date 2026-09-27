@@ -1,13 +1,18 @@
 # Opus 5.5 Motion Graphics
 
-## Make your own in 4 steps
+## How to make one
 
-1. Pick one idea to animate, like a grid that bends.
-2. Name every state: cover, flip, animate, flip back.
-3. Ask for one HTML file, then fix it frame by frame.
-4. Render it to a GIF with Playwright and ffmpeg.
+1. Pick one topic and a short list (here: 12 books).
+2. Use real images, not AI fakes (covers by ISBN).
+3. Give each item one idea to act out.
+4. Name every state: cover → flip → animate → flip back.
+5. Ask Claude Code for one HTML file with SVG.
+6. Open it in Chrome and look at every frame.
+7. Tell Claude what looks wrong. Repeat.
+8. Fact-check every label and number on screen.
+9. Render it to a GIF.
 
-Full walkthrough + starter prompt → [motion-graphics/](motion-graphics)
+Starter prompt + render command → [motion-graphics/](motion-graphics)
 
 ## What each cover does
 
