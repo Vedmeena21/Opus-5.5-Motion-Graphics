@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>12 AI/ML Books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500;700;800&display=swap">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#EDEBE6;color:#1A1A1A;font-family:"Archivo","Helvetica Neue",Arial,sans-serif;padding:24px 16px 40px;-webkit-font-smoothing:antialiased}
+  .page{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .holder{position:relative;width:100%;height:1350px;overflow:hidden}
+  .controls{display:flex;gap:10px;align-items:center;font-size:14px;color:#555}
+  .controls button{font:700 14px/1 "Archivo",sans-serif;padding:10px 18px;border-radius:999px;border:2px solid #1A1A1A;background:#fff;cursor:pointer}
+  body.capture{padding:0}
+  body.capture .page{max-width:none}
+  body.capture .controls{display:none}
+
+  .poster{position:absolute;left:0;top:0;transform-origin:0 0;width:1080px;height:1350px;overflow:hidden;background:#FFFEFB;font-variant-numeric:tabular-nums}
+  .ab{position:absolute}
+  .m{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+
+  /* heading */
+  .hd{position:absolute;left:0;top:26px;width:1080px;height:236px}
+  .hd svg.frame{position:absolute;inset:0}
+  .hd h1{position:absolute;left:0;right:0;top:52px;margin:0;text-align:center;font-family:"Luckiest Guy","Archivo Black",Impact,sans-serif;font-weight:400;line-height:1;color:#141414}
+  .hd h1 .l1{display:block;font-size:92px;letter-spacing:.01em}
+  .hd h1 .l2{display:block;font-size:46px;letter-spacing:.02em;margin-top:6px}
+  .hd h1 .skip{position:relative;display:inline-block;color:#D2481F;transform-origin:50% 60%}
+  .hd h1 .ch{display:inline-block;will-change:transform}
+
+  /* books */
+  .grid{position:absolute;left:44px;top:282px;display:grid;grid-template-columns:repeat(4,230px);grid-template-rows:repeat(3,322px);gap:12px 24px}
+  .cell{position:relative;display:flex;flex-direction:column;align-items:center}
+  .book{position:relative;width:176px;height:226px;perspective:900px}
+  .flip{position:absolute;inset:0;transform-style:preserve-3d}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+  .face.back{transform:rotateY(180deg)}
+  .front{border-radius:3px 7px 7px 3px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1);background:#fff}
+  .front img{width:100%;height:100%;object-fit:cover;display:block}
+  .front::before{content:"";position:absolute;left:0;top:0;bottom:0;width:9px;background:linear-gradient(90deg,rgba(0,0,0,.2),rgba(0,0,0,0));z-index:2}
+  .ins{position:absolute;left:18px;right:12px;top:12px;z-index:2}
+  .ins small{display:block;font-size:8.5px;font-weight:800;letter-spacing:.14em;opacity:.75}
+  .ins b{display:block;font-size:13px;font-weight:800;line-height:1.15;margin-top:3px;letter-spacing:-.01em}
+  .book .pages{position:absolute;left:5px;top:5px;width:176px;height:226px;border-radius:3px 7px 7px 3px;background:repeating-linear-gradient(90deg,#F3EFE6 0 2px,#E4DED2 2px 3px);border:1px solid #CFC7B8}
+  .book .shadow{position:absolute;left:6px;right:-10px;bottom:-12px;height:16px;border-radius:50%;background:rgba(40,30,10,.14);filter:blur(6px)}
+  .cover{position:absolute;inset:0;border-radius:3px 7px 7px 3px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+  .cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,.05));z-index:3}
+  .cover::after{content:"";position:absolute;left:10px;top:0;bottom:0;width:1.5px;background:rgba(255,255,255,.35);z-index:3}
+  .ct{position:absolute;left:18px;right:12px;top:12px;z-index:2}
+  .ct b{display:block;font-size:14px;font-weight:800;line-height:1.1;letter-spacing:-.01em}
+  .ct small{display:block;font-size:8.5px;font-weight:500;line-height:1.25;margin-top:3px;opacity:.85}
+  .motif{position:absolute;left:0;top:64px;width:176px;height:156px;z-index:1}
+  .lbl{margin-top:14px;text-align:center;width:230px}
+  .lbl b{display:block;font-size:19px;font-weight:800;line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+  .lbl span{display:block;font-size:14px;font-weight:500;line-height:1.25;color:#3A3A3A;margin-top:4px;text-wrap:balance}
+  .c-or{color:#B4541C}.c-te{color:#177A80}.c-in{color:#161616}
+  .stk{position:absolute;right:-2px;top:-12px;z-index:6;background:#FFD23F;color:#141414;border:2px solid #141414;font-size:10px;font-weight:900;letter-spacing:.06em;padding:4px 8px;border-radius:999px;transform:rotate(7deg);white-space:nowrap}
+
+  .ft{position:absolute;left:30px;top:1281px;width:1020px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .ft .w{display:inline-block;will-change:transform}
+  .ft .l{display:flex;align-items:center;gap:8px;font-size:21px;font-stretch:70%;font-weight:700;color:#141414;white-space:nowrap}
+  .ft .ws{display:flex;gap:.28em}
+  .ft .ws .ac{font-style:italic}
+  .ft .cal{width:38px;height:38px;overflow:visible}
+  .ft .r{display:flex;align-items:center;gap:9px}
+  .ft .phw{position:relative;width:54px;height:54px}
+  .ft .phw svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .ft .phw img{position:absolute;left:6px;top:6px;width:42px;height:42px;border-radius:50%}
+  .ft .tx{white-space:nowrap}
+  .ft .t1{font-size:21px;font-stretch:70%;font-weight:800;color:#141414;line-height:1.1}
+  .ft .nm{position:relative;display:inline-block;color:#D2481F;margin:0 14px}
+  .ft .nm svg{position:absolute;left:-12px;top:-8px;width:calc(100% + 24px);height:calc(100% + 15px);overflow:visible}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="holder" id="holder">
+<div class="poster" id="poster" role="img" aria-label="12 AI/ML books no AI engineer should skip, each cover animated, by Ved Prakash Meena">
+
+  <header class="hd">
+    <svg class="frame" viewBox="0 0 1080 236" aria-hidden="true">
+      <path id="fr1" d="M118 30 Q540 16 964 28 Q996 30 996 62 L994 176 Q992 206 962 206 Q540 214 120 204 Q88 202 88 172 L90 60 Q92 32 118 30Z" fill="none" stroke="#141414" stroke-width="5" stroke-linejoin="round"/>
+      <path id="fr2" d="M124 36 Q540 24 958 34 Q988 38 988 66 L988 172 Q986 198 958 200 Q540 206 124 198 Q96 196 96 168 L96 64 Q98 38 124 36Z" fill="none" stroke="#141414" stroke-width="2" opacity=".55"/>
+      <g stroke="#141414" stroke-width="4" stroke-linecap="round" fill="none" pathLength="1" stroke-dasharray="1 1"><path class="sl" d="M1012 26 1034 8" pathLength="1"/><path class="sl" d="M1020 44 1050 34" pathLength="1"/><path class="sl" d="M1016 62 1040 60" pathLength="1"/><path class="sl" d="M68 190 46 208" pathLength="1"/><path class="sl" d="M60 172 30 182" pathLength="1"/><path class="sl" d="M64 154 40 156" pathLength="1"/></g>
+      <path id="spk1" d="M60 40c2 10 4 12 14 14-10 2-12 4-14 14-2-10-4-12-14-14 10-2 12-4 14-14Z" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"/>
+      <path id="spk2" d="M1012 150c2 10 4 12 14 14-10 2-12 4-14 14-2-10-4-12-14-14 10-2 12-4 14-14Z" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"/>
+      <path id="spk3" d="M50 96c1.4 7 3 8.6 10 10-7 1.4-8.6 3-10 10-1.4-7-3-8.6-10-10 7-1.4 8.6-3 10-10Z" fill="none" stroke="#141414" stroke-width="2.6" stroke-linejoin="round"/>
+      <circle id="spk4" cx="1040" cy="112" r="6" fill="none" stroke="#141414" stroke-width="3"/>
+      <circle id="spk5" cx="36" cy="70" r="5" fill="none" stroke="#141414" stroke-width="3"/>
+      <path id="skipRing" d="M806 141c46-6 84 6 86 26 2 22-46 34-94 32-46-2-76-14-74-32 2-17 36-28 76-27 22 1 42 4 58 9" fill="none" stroke="#D2481F" stroke-width="4" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+    </svg>
+    <h1><span class="l1">12 AI/ML BOOKS</span><span class="l2">NO AI ENGINEER SHOULD <span class="skip">SKIP</span></span></h1>
+  </header>
+
+  <main class="grid">
+
+    <!-- 1 AI Engineering -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/01_ai_engineering.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#FBF8F3;color:#332A22">
+          <i class="ab" style="left:0;right:0;top:0;height:5px;background:#C8102E"></i>
+          <div class="ins"><small>INSIDE</small><b>The AI engineering stack</b></div>
+          <svg class="motif" id="m1" viewBox="0 0 176 156">
+            <g class="blk"><rect x="24" y="46" width="132" height="28" rx="5" fill="#C8102E"/><text x="90" y="64" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="10" fill="#fff">APPLICATION</text></g>
+            <g class="blk"><rect x="24" y="78" width="132" height="28" rx="5" fill="#7A5C43"/><text x="90" y="96" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="10" fill="#fff">MODEL</text></g>
+            <g class="blk"><rect x="24" y="110" width="132" height="28" rx="5" fill="#332A22"/><text x="90" y="128" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="10" fill="#fff">INFRASTRUCTURE</text></g>
+            <path id="m1s" d="M90 12c2 9 4 11 13 13-9 2-11 4-13 13-2-9-4-11-13-13 9-2 11-4 13-13Z" fill="#C8102E"/>
+          </svg>
+        </div></div></div>
+        <span class="stk">START HERE</span>
+      </div>
+      <div class="lbl"><b class="c-or">AI Engineering</b><span>Chip Huyen</span></div>
+    </div>
+
+    <!-- 2 Applied ML -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/02_applied_ml_ai_engineers.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#5B7A3E;color:#fff">
+          <div class="ins"><small>INSIDE</small><b>Models for problems code can't solve</b></div>
+          <svg class="motif" id="m2" viewBox="0 0 176 156">
+            <path d="M24 16V136H162" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>
+            <path id="m2l" d="M28 126 154 44" fill="none" stroke="#FFD23F" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+            <g id="m2g" transform="translate(148 24)"><path d="M-3-13h6l1 4 4 2 4-2 4 4-2 4 2 4 4 1v6l-4 1-2 4 2 4-4 4-4-2-4 2-1 4h-6l-1-4-4-2-4 2-4-4 2-4-2-4-4-1v-6l4-1 2-4-2-4 4-4 4 2 4-2z" transform="scale(.8)" fill="none" stroke="#fff" stroke-width="2"/><circle r="4" fill="none" stroke="#fff" stroke-width="2"/></g>
+          </svg>
+        </div></div></div>
+      </div>
+      <div class="lbl"><b class="c-or">Applied ML &amp; AI for Engineers</b><span>Jeff Prosise</span></div>
+    </div>
+
+    <!-- 3 AIMA -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/03_aima_4e.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#EFEAF7;color:#2B2350">
+          <div class="ins"><small>INSIDE</small><b>Search, logic &amp; agents</b></div>
+          <svg class="motif" id="m3" viewBox="0 0 176 156"><g id="m3b"></g><g id="m3v"></g>
+            <g id="m3k"><path d="M-8 11h16v-3c0-3-1-5-3-7l2-3c1-2 0-4-2-5l-1-3-2 2c-3 1-5 4-6 7l-1 3 3 1 2-2 2 1c-1 2-3 3-4 5-1 1-2 2-2 3z" fill="#2B2350" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></g>
+          </svg>
+        </div></div></div>
+        <span class="stk">THE CLASSIC</span>
+      </div>
+      <div class="lbl"><b class="c-te">Artificial Intelligence: A Modern Approach</b><span>Stuart Russell &amp; Peter Norvig</span></div>
+    </div>
+
+    <!-- 4 Generative DL -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/04_generative_deep_learning_2e.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#24332A;color:#fff">
+          <div class="ins"><small>INSIDE</small><b>Diffusion: noise to image</b></div>
+          <svg class="motif" id="m4" viewBox="0 0 176 156"><g id="m4g"></g><text id="m4t" x="88" y="148" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="9" fill="#C8E6C9">step 1000</text></svg>
+        </div></div></div>
+      </div>
+      <div class="lbl"><b class="c-in">Generative Deep Learning</b><span>David Foster</span></div>
+    </div>
+
+    <!-- 5 Deep Learning -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/05_deep_learning.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#33455C;color:#fff">
+          <div class="ins"><small>INSIDE</small><b>Neural nets, layer by layer</b></div>
+          <svg class="motif" id="m5" viewBox="0 0 176 156"><g id="m5e"></g><g id="m5p"></g><g id="m5n"></g></svg>
+        </div></div></div>
+        <span class="stk">FREE ONLINE</span>
+      </div>
+      <div class="lbl"><b class="c-in">Deep Learning</b><span>Ian Goodfellow, Yoshua Bengio &amp; Aaron Courville</span></div>
+    </div>
+
+    <!-- 6 GANs in Action -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/06_gans_in_action.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#5D7464;color:#fff">
+          <div class="ins"><small>INSIDE</small><b>Generator vs discriminator</b></div>
+          <svg class="motif" id="m6" viewBox="0 0 176 156">
+            <circle cx="30" cy="82" r="18" fill="#EDE6DA"/><text x="30" y="88" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="16" fill="#5D7464">G</text>
+            <circle cx="146" cy="82" r="18" fill="#EDE6DA"/><text x="146" y="88" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="16" fill="#5D7464">D</text>
+            <text x="30" y="114" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="8" fill="#EDE6DA">Generator</text>
+            <text x="146" y="114" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="8" fill="#EDE6DA">Discriminator</text>
+            <g id="m6c"><rect x="-17" y="-17" width="34" height="34" rx="3" fill="#fff" stroke="#25331F" stroke-width="2"/>
+              <path id="m6a" d="M-10 6c3-10 6 4 9-6s6 8 9-2" fill="none" stroke="#C0392B" stroke-width="2.4" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+              <g id="m6b"><circle cx="0" cy="0" r="10" fill="#F6C744" stroke="#25331F" stroke-width="1.6"/><circle cx="-3.5" cy="-2" r="1.4" fill="#25331F"/><circle cx="3.5" cy="-2" r="1.4" fill="#25331F"/><path d="M-4 3q4 4 8 0" fill="none" stroke="#25331F" stroke-width="1.4" stroke-linecap="round"/></g>
+            </g>
+            <g id="m6v"><rect x="-26" y="-10" width="52" height="20" rx="4" fill="none" stroke-width="2.5"/><text y="4.5" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="12" letter-spacing="1"></text></g>
+          </svg>
+        </div></div></div>
+      </div>
+      <div class="lbl"><b class="c-or">GANs in Action</b><span>Jakub Langr &amp; Vladimir Bok</span></div>
+    </div>
+
+    <!-- 7 Hands-On Generative AI -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/07_hands_on_generative_ai.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#F7E6D2;color:#6B3A0A">
+          <div class="ins"><small>INSIDE</small><b>Text-to-image, step by step</b></div>
+          <svg class="motif" id="m7" viewBox="0 0 176 156">
+            <defs><clipPath id="m7clip"><rect id="m7cr" x="33" y="34" width="110" height="0"/></clipPath></defs>
+            <rect x="16" y="6" width="144" height="20" rx="10" fill="#fff" stroke="#E07B24" stroke-width="1.5"/>
+            <text id="m7q" x="28" y="19.5" font-family="JetBrains Mono" font-weight="700" font-size="8.5" fill="#6B3A0A"></text>
+            <rect x="33" y="34" width="110" height="96" rx="4" fill="#B35F14"/>
+            <g id="m7n"></g>
+            <g clip-path="url(#m7clip)">
+              <rect x="33" y="34" width="110" height="96" rx="4" fill="#1D2340"/>
+              <circle cx="46" cy="46" r="1.2" fill="#fff"/><circle cx="130" cy="52" r="1.4" fill="#fff"/><circle cx="118" cy="40" r="1" fill="#fff"/><circle cx="52" cy="112" r="1" fill="#fff"/>
+              <circle cx="88" cy="96" r="28" fill="#F4E9C8"/><circle cx="78" cy="90" r="4" fill="#E2D5AE"/><circle cx="96" cy="104" r="5" fill="#E2D5AE"/>
+              <path d="M84 70l3-9 4 7h6l4-7 3 9c3 3 4 7 3 11h-26c-1-4 0-8 3-11z" fill="#141414"/><path d="M104 78q10 2 8-8" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <rect id="m7scan" x="33" y="34" width="110" height="2" fill="#FFE6A8"/>
+            <text id="m7t" x="88" y="146" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="8.5" fill="#6B3A0A">denoising 0/50</text>
+          </svg>
+        </div></div></div>
+      </div>
+      <div class="lbl"><b class="c-te">Hands-On Generative AI</b><span>Omar Sanseviero, Pedro Cuenca, Apolinário Passos &amp; Jonathan Whitaker</span></div>
+    </div>
+
+    <!-- 8 Hands-On LLMs -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/08_hands_on_llms.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#F3E7DC;color:#3A2A12">
+          <div class="ins"><small>INSIDE</small><b>Tokens, embeddings, attention</b></div>
+          <svg class="motif" id="m8" viewBox="0 0 176 156">
+            <path id="m8a1" d="M146 32Q120 4 92 32" fill="none" stroke="#C0392B" stroke-width="3.2" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+            <path id="m8a2" d="M146 32Q90 -8 40 32" fill="none" stroke="#C0392B" stroke-width="1.2" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+            <g font-family="JetBrains Mono" font-weight="800" font-size="10" text-anchor="middle">
+              <rect x="18" y="34" width="44" height="18" rx="9" fill="#3A2A12"/><text x="40" y="46.5" fill="#F6E7C8">The</text>
+              <rect x="70" y="34" width="44" height="18" rx="9" fill="#3A2A12"/><text x="92" y="46.5" fill="#F6E7C8">cat</text>
+              <rect x="122" y="34" width="44" height="18" rx="9" fill="#3A2A12"/><text x="144" y="46.5" fill="#F6E7C8">sat</text>
+            </g>
+            <g id="m8v"></g>
+            <g id="m8p" font-family="JetBrains Mono" font-weight="700" font-size="8.5" fill="#3A2A12"></g>
+          </svg>
+        </div></div></div>
+      </div>
+      <div class="lbl"><b class="c-or">Hands-On Large Language Models</b><span>Jay Alammar &amp; Maarten Grootendorst</span></div>
+    </div>
+
+    <!-- 9 Hands-On ML -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/09_hands_on_ml_pytorch.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#F8ECE3;color:#5A3A2A">
+          <div class="ins"><small>INSIDE</small><b>Finding the decision boundary</b></div>
+          <svg class="motif" id="m9" viewBox="0 0 176 156">
+            <defs><clipPath id="m9clip"><rect x="16" y="6" width="144" height="124" rx="6"/></clipPath></defs>
+            <rect x="16" y="6" width="144" height="124" rx="6" fill="#fff" fill-opacity=".6"/>
+            <g clip-path="url(#m9clip)"><path id="m9h" fill="#2F6FDB" fill-opacity=".12"/><line id="m9l" stroke="#5A3A2A" stroke-width="2.4" stroke-dasharray="5 4"/></g>
+            <g id="m9p"></g>
+            <g id="m9c"><rect x="46" y="136" width="84" height="18" rx="9" fill="#7A4A30"/><text id="m9a" x="88" y="148.5" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="9" fill="#FBEFE6">accuracy 61%</text></g>
+          </svg>
+        </div></div></div>
+        <span class="stk">2025 · PYTORCH</span>
+      </div>
+      <div class="lbl"><b class="c-in">Hands-On Machine Learning</b><span>Aurélien Géron</span></div>
+    </div>
+
+    <!-- 10 LLM Engineer's Handbook -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/10_llm_engineers_handbook.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#FFFFFF;color:#13233F">
+          <div class="ins"><small>INSIDE</small><b>From data to production</b></div>
+          <svg class="motif" id="m10" viewBox="0 0 176 156">
+            <path d="M80 34H96M129 54V78M96 98H80" stroke="#13233F" stroke-width="2" marker-end="url(#m10ar)"/>
+            <defs><marker id="m10ar" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8z" fill="#13233F"/></marker></defs>
+            <g class="bx"><rect x="14" y="14" width="66" height="40" rx="8" fill="#fff" stroke="#13233F" stroke-width="2"/><text x="47" y="38" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="10">Data</text></g>
+            <g class="bx"><rect x="96" y="14" width="66" height="40" rx="8" fill="#fff" stroke="#13233F" stroke-width="2"/><text x="129" y="38" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="10">Fine-tune</text></g>
+            <g class="bx"><rect x="96" y="78" width="66" height="40" rx="8" fill="#fff" stroke="#13233F" stroke-width="2"/><text x="129" y="102" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="10">RAG</text></g>
+            <g class="bx"><rect x="14" y="78" width="66" height="40" rx="8" fill="#fff" stroke="#13233F" stroke-width="2"/><text x="47" y="102" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="10">Deploy</text></g>
+            <circle id="m10d" r="5" fill="#F28C28" stroke="#13233F" stroke-width="1.5"/>
+            <g id="m10c"><rect x="36" y="130" width="104" height="20" rx="10" fill="#1F8F5F"/><text x="88" y="143.5" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="9.5" fill="#fff">Live in production</text></g>
+          </svg>
+        </div></div></div>
+      </div>
+      <div class="lbl"><b class="c-te">LLM Engineer's Handbook</b><span>Paul Iusztin &amp; Maxime Labonne</span></div>
+    </div>
+
+    <!-- 11 Math for ML -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/11_math_for_ml.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#1F5566;color:#fff">
+          <div class="ins"><small>INSIDE</small><b>Linear algebra you can see</b></div>
+          <svg class="motif" id="m11" viewBox="0 0 176 156">
+            <defs><clipPath id="m11clip"><rect x="12" y="4" width="152" height="124" rx="6"/></clipPath>
+              <marker id="m11a" viewBox="0 0 8 8" refX="5" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 8 4 0 8z" fill="context-stroke"/></marker></defs>
+            <g clip-path="url(#m11clip)"><g id="m11g" stroke="#7FC7D3" stroke-opacity=".45" stroke-width="1"></g>
+              <line id="m11i" stroke="#FFB347" stroke-width="3" stroke-linecap="round"/><line id="m11j" stroke="#5EE0F2" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="88" cy="66" r="3" fill="#fff"/></g>
+            <text id="m11t" x="88" y="146" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="9" fill="#BFE6EC">A · x</text>
+          </svg>
+        </div></div></div>
+        <span class="stk">FREE PDF</span>
+      </div>
+      <div class="lbl"><b class="c-or">Mathematics for Machine Learning</b><span>Marc Peter Deisenroth, A. Aldo Faisal &amp; Cheng Soon Ong</span></div>
+    </div>
+
+    <!-- 12 NLP with Transformers -->
+    <div class="cell">
+      <div class="book"><i class="shadow"></i><i class="pages"></i>
+        <div class="flip"><div class="face front"><img src="covers/12_nlp_transformers.jpg" alt=""></div><div class="face back"><div class="cover" style="background:#2B57A6;color:#fff">
+          <div class="ins"><small>INSIDE</small><b>Attention, visualised</b></div>
+          <svg class="motif" id="m12" viewBox="0 0 176 156"><g id="m12l"></g><g id="m12w" font-family="JetBrains Mono" font-weight="700" font-size="9.5"></g>
+            <text id="m12t" x="88" y="150" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="8.5" fill="#D6E2FF">self-attention</text></svg>
+        </div></div></div>
+      </div>
+      <div class="lbl"><b class="c-te">NLP with Transformers</b><span>Lewis Tunstall, Leandro von Werra &amp; Thomas Wolf</span></div>
+    </div>
+
+  </main>
+
+  <footer class="ft">
+    <div class="r">
+      <span class="phw w"><svg viewBox="0 0 58 58" aria-hidden="true"><circle id="phR" cx="29" cy="29" r="27.5" fill="none" stroke="#D2481F" stroke-width="2.4" stroke-linecap="round" pathLength="24" stroke-dasharray="2.1 .9"/></svg><img src="ved.png" alt="Ved Prakash Meena"></span>
+      <div class="tx">
+        <div class="t1"><span class="w">Follow</span><span class="nm"><span class="w">Ved</span> <span class="w">Prakash</span> <span class="w">Meena</span><svg viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><path id="nameRing" d="M118 3C170 2 198 9 197 21S150 39 96 38 3 32 4 20 58 2 112 2 158 5 176 9" fill="none" stroke="#D2481F" stroke-width="2.6" stroke-linecap="round" vector-effect="non-scaling-stroke" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></svg></span><span class="w lo">for</span> <span class="w lo">more</span> <span class="w lo">AI</span> <span class="w lo">resources.</span></div>
+      </div>
+    </div>
+    <div class="l">
+      <svg class="cal w" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="4" y="7" width="32" height="29" rx="5" fill="#fff"/>
+        <path d="M4 12a5 5 0 0 1 5-5h22a5 5 0 0 1 5 5v3.5H4z" fill="#D2481F"/>
+        <g id="calG"></g>
+        <g id="calH"><rect x="-3.6" y="-3.1" width="7.2" height="6.2" rx="1.6" fill="#D2481F"/><path id="calK" d="M-2 .1-.5 1.6 2.2-1.3" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/></g>
+        <rect x="4" y="7" width="32" height="29" rx="5" fill="none" stroke="#141414" stroke-width="2.4"/>
+        <g id="calR" stroke="#141414" stroke-width="2.6" stroke-linecap="round"><path d="M13 3.6V10"/><path d="M27 3.6V10"/></g>
+      </svg>
+      <span class="ws"><span class="w">I</span><span class="w ac">(actually)</span><span class="w">help</span><span class="w">businesses</span><span class="w">build</span><span class="w">AI</span><span class="w">Agents</span><span class="w">and</span><span class="w">Workflows.</span></span>
+    </div>
+  </footer>
+</div>
+</div>
+<div class="controls"><button type="button" id="playBtn">Pause</button><button type="button" id="restartBtn">Restart</button><span>8-second loop</span></div>
+</div>
+
+<script>
+(() => {
+  const T = 8, HERO = 1.6, NS = 'http://www.w3.org/2000/svg';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (x, a = 0, b = 1) => x < a ? a : x > b ? b : x;
+  const seg = (t, a, b) => clamp((t - a) / (b - a));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const E = {
+    out: p => 1 - (1 - p) ** 3, in: p => p * p * p,
+    io: p => p < .5 ? 4 * p * p * p : 1 - ((-2 * p + 2) ** 3) / 2,
+    back: p => { const c = 1.9; return 1 + (c + 1) * (p - 1) ** 3 + c * (p - 1) ** 2; }
+  };
+  const txt = (el, s) => { if (el._t !== s) { el._t = s; el.textContent = s; } };
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const hash = n => { n = (n ^ 61) ^ (n >>> 16); n = n + (n << 3); n = n ^ (n >>> 4); n = Math.imul(n, 0x27d4eb2d); n = n ^ (n >>> 15); return (n >>> 0) / 4294967296; };
+  const out = t => 1 - seg(t, 7.35, 7.8);   // shared fade-out before the loop restarts
+  const tiles = [], def = f => tiles.push(f);
+
+  /* heading + footer share one choreography on a 4s beat, so they never sit still */
+  const md = (x, m) => ((x % m) + m) % m;
+  const bump = (t, s, d = .36, P = 4) => { const u = md(t - s, P); return u < d ? Math.sin(Math.PI * u / d) : 0; };
+  // a marker ring redraws once a loop: lifts off, then the pen draws it again (dasharray 1 1, pathLength 1)
+  const mark = (el, t, at) => { const u = md(t - at, 8); el.style.opacity = u < .15 ? (1 - u / .15).toFixed(3) : 1; el.setAttribute('stroke-dashoffset', (u >= .15 && u < .85 ? 1 - E.io((u - .15) / .7) : 0).toFixed(4)); };
+
+  /* hand-drawn boil: frame and marker rings redraw with a slight wobble, 5 times a second */
+  {
+    const vars = (el, amp, seed) => { const d0 = el.getAttribute('d'); return [0, 1, 2, 3].map(v => { let k = 0; return v ? d0.replace(/-?\d*\.?\d+/g, m => (+m + (hash(seed * 7717 + v * 1013 + k++) - .5) * 2 * amp).toFixed(1)) : d0; }); };
+    const B = [['#fr1', 1.4], ['#fr2', 1.2], ['#skipRing', 1], ['#nameRing', .9]].map(([q, a], i) => ({ el: $(q), V: vars($(q), a, i + 1) }));
+    def(t => { const v = Math.floor(t * 5 + 1e-6) % 4; B.forEach(b => { if (b.v !== v) { b.v = v; b.el.setAttribute('d', b.V[v]); } }); });
+  }
+
+  /* heading: sparkles twinkle, speed lines whoosh, a wave runs through the title, SKIP gets re-marked */
+  {
+    const sp = ['#spk1', '#spk2', '#spk3', '#spk4', '#spk5'].map(s => $(s)), ring = $('#skipRing'), skip = $('.hd .skip'), sl = $$('.hd .sl');
+    const C = [[60, 54], [1012, 164], [50, 106], [1040, 112], [36, 70]];
+    const l1 = $('.hd .l1'), chs = [], L1 = l1.textContent;
+    l1.textContent = '';
+    [...L1].forEach(c => { if (c === ' ') l1.append(' '); else { const e = document.createElement('span'); e.className = 'ch'; e.textContent = c; l1.append(e); chs.push(e); } });
+    def(t => {
+      sp.forEach((e, i) => { const s = .75 + .35 * (.5 + .5 * Math.sin(2 * Math.PI * (t / 2 + i * .23))), r = 45 * Math.sin(2 * Math.PI * (t / 8 + i * .2)); e.setAttribute('transform', `translate(${C[i][0]} ${C[i][1]}) rotate(${r.toFixed(1)}) scale(${s.toFixed(3)}) translate(${-C[i][0]} ${-C[i][1]})`); });
+      sl.forEach((e, k) => {
+        const u = md(t / 4 + (k < 3 ? 0 : .25) + (k % 3) * .04, 1);
+        const o = u < .15 ? 1 - E.out(u / .15) : u < .75 ? 0 : u < .9 ? -E.in((u - .75) / .15) : 1;
+        e.setAttribute('stroke-dashoffset', o.toFixed(4));
+      });
+      chs.forEach((e, j) => { const q = bump(t, j * .1, .45, 2); e.style.transform = `translateY(${(-10 * q).toFixed(2)}px) rotate(${(-5 * q).toFixed(2)}deg)`; });
+      mark(ring, t, 7.2);
+      const w = 4 * Math.sin(Math.PI * t);
+      skip.style.transform = `rotate(${w.toFixed(2)}deg) scale(${(1 + .01 * Math.abs(w)).toFixed(3)})`;
+    });
+  }
+
+  /* each book: real cover first, flips to its animated "inside", flips back */
+  const F = i => 1.6 + i * .33, FLIP = .5, HOLD = 2.1;
+  const local = (i, t) => clamp((t - F(i) - .3) * 2.05, 0, 7.3);
+  const defB = (i, f) => tiles.push(t => f(local(i, t)));
+  {
+    const flips = $$('.flip');
+    def(t => flips.forEach((el, i) => {
+      const a = E.io(seg(t, F(i), F(i) + FLIP)) - E.io(seg(t, F(i) + HOLD, F(i) + HOLD + FLIP));
+      const lift = Math.sin(Math.PI * seg(t, F(i), F(i) + FLIP)) + Math.sin(Math.PI * seg(t, F(i) + HOLD, F(i) + HOLD + FLIP));
+      el.style.transform = `translateZ(${(lift * 30).toFixed(1)}px) rotateY(${(a * 180).toFixed(2)}deg)`;
+    }));
+  }
+
+  /* 1 AI Engineering: the stack assembles */
+  {
+    const blk = $$('#m1 .blk'), s = $('#m1s'), D = [1.2, .7, .2];
+    defB(0, t => {
+      blk.forEach((g, i) => { const p = seg(t, D[i], D[i] + .45); g.setAttribute('transform', `translate(0 ${(-90 * (1 - E.back(p))).toFixed(2)})`); g.style.opacity = (p > 0 ? 1 : 0) * out(t); });
+      const sp = seg(t, 1.7, 2.0), pul = 1 + .15 * Math.sin(t * Math.PI * 2);
+      s.setAttribute('transform', `translate(90 25) scale(${(E.back(sp) * pul).toFixed(3)}) translate(-90 -25)`);
+      s.style.opacity = sp > 0 ? out(t) : 0;
+    });
+  }
+
+  /* 2 Applied ML: points land, regression line fits */
+  {
+    const svg = $('#m2'), line = $('#m2l'), gear = $('#m2g');
+    const P = [[34, 122], [46, 110], [58, 118], [70, 98], [84, 96], [98, 82], [112, 80], [126, 66], [142, 58]];
+    const pts = P.map(([x, y]) => mk('circle', { cx: x, cy: y, r: 4, fill: '#fff' }, svg));
+    defB(1, t => {
+      pts.forEach((c, k) => { const p = seg(t, .2 + k * .09, .45 + k * .09); c.setAttribute('r', (4 * E.back(p)).toFixed(2)); c.style.opacity = out(t); });
+      line.setAttribute('stroke-dashoffset', (1 - E.io(seg(t, 1.2, 2.2))).toFixed(4)); line.style.opacity = out(t);
+      gear.setAttribute('transform', `translate(148 24) rotate(${(t * 45).toFixed(2)})`);
+    });
+  }
+
+  /* 3 AIMA: a knight searches the board */
+  {
+    const b = $('#m3b'), v = $('#m3v'), k = $('#m3k'), S = 28, X0 = 32, Y0 = 10;
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) mk('rect', { x: X0 + c * S, y: Y0 + r * S, width: S, height: S, fill: (r + c) % 2 ? '#B9A8E0' : '#fff' }, b);
+    mk('rect', { x: X0, y: Y0, width: 4 * S, height: 4 * S, fill: 'none', stroke: '#2B2350', 'stroke-width': 2 }, b);
+    const path = [[0, 3], [1, 1], [3, 0], [2, 2]];
+    const ctr = ([c, r]) => [X0 + c * S + S / 2, Y0 + r * S + S / 2];
+    const marks = path.map(sq => { const [x, y] = ctr(sq); return mk('circle', { cx: x, cy: y, r: 5, fill: '#7E57C2' }, v); });
+    const H = [1, 3, 5, 7];
+    defB(2, t => {
+      let i = 0; H.forEach((h, n) => { if (t >= h) i = n + 1; });
+      const cur = path[i % 4], nxt = path[(i + 1) % 4];
+      const hp = i < 4 ? seg(t, H[i], H[i] + .45) : 0;
+      const a = ctr(cur), bq = ctr(nxt);
+      const x = lerp(a[0], bq[0], E.io(hp)), y = lerp(a[1], bq[1], E.io(hp)) - Math.sin(Math.PI * hp) * 16;
+      k.setAttribute('transform', `translate(${x.toFixed(1)} ${(y + 2).toFixed(1)})`);
+      marks.forEach((m, n) => { const seen = n === 0 || t >= H[n - 1] + .45; m.style.opacity = seen && t < 7.45 ? .45 : 0; });
+    });
+  }
+
+  /* 4 Generative DL: noise denoises into a landscape */
+  {
+    const g = $('#m4g'), lab = $('#m4t'), N = 12, C = 8.4, X0 = 88 - N * C / 2, Y0 = 8;
+    const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+    const tgt = [], cells = [];
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+      const hill = 7.6 + 1.3 * Math.sin(c * .7);
+      let col;
+      if (Math.hypot(c - 8, r - 3.4) < 2.1) col = hex('#FFF2C4');
+      else if (r > hill) col = r > hill + 2 ? hex('#1F6B45') : hex('#2E8B57');
+      else col = [lerp(255, 255, r / 8), lerp(142, 208, r / 8), lerp(94, 138, r / 8)].map(Math.round);
+      tgt.push(col);
+      cells.push(mk('rect', { x: (X0 + c * C).toFixed(1), y: (Y0 + r * C).toFixed(1), width: C - .8, height: C - .8, rx: 1 }, g));
+    }
+    defB(3, t => {
+      const p = t >= 7.3 ? 1 - seg(t, 7.3, 7.9) : E.io(seg(t, .4, 4.6)), fr = Math.floor(t * 12);
+      cells.forEach((e, i) => {
+        const n = hash(i * 7919 + fr * 104729), m = Math.round(40 + n * 200);
+        const col = tgt[i].map(v => Math.round(lerp(m, v, p)));
+        const f = `rgb(${col[0]},${col[1]},${col[2]})`;
+        if (e._f !== f) { e._f = f; e.setAttribute('fill', f); }
+      });
+      txt(lab, `step ${Math.round(1000 * (1 - p))}`);
+    });
+  }
+
+  /* 5 Deep Learning: signals flow through the layers */
+  {
+    const eg = $('#m5e'), pg = $('#m5p'), ng = $('#m5n');
+    const X = [22, 66, 110, 154], Nn = [3, 4, 4, 2], Y = n => Array.from({ length: n }, (_, k) => 70 + (k - (n - 1) / 2) * 28);
+    const layers = Nn.map((n, l) => Y(n).map(y => [X[l], y]));
+    const edges = [];
+    for (let l = 0; l < 3; l++) layers[l].forEach(a => layers[l + 1].forEach(b => { mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: '#6C72C9', 'stroke-opacity': .45, 'stroke-width': 1 }, eg); edges.push({ l, a, b, d: mk('circle', { r: 2.2, fill: '#FFD166' }, pg) }); }));
+    const nodes = layers.map((L, l) => L.map(([x, y]) => mk('circle', { cx: x, cy: y, r: 7, fill: '#2C3170', stroke: '#9AA0FF', 'stroke-width': 1.6 }, ng)));
+    defB(4, t => {
+      const ph = (t % 2) / 2;
+      edges.forEach(e => { const p = seg(ph, e.l / 3, (e.l + 1) / 3); const on = p > 0 && p < 1; e.d.setAttribute('cx', lerp(e.a[0], e.b[0], p).toFixed(1)); e.d.setAttribute('cy', lerp(e.a[1], e.b[1], p).toFixed(1)); e.d.style.opacity = on ? 1 : 0; });
+      nodes.forEach((L, l) => { const hit = l === 0 ? 1 - seg(ph, 0, .12) : Math.max(0, 1 - Math.abs(ph - l / 3) * 9); L.forEach(c => c.setAttribute('fill', hit > .1 ? `rgba(255,209,102,${(.35 + .65 * hit).toFixed(2)})` : '#2C3170')); });
+    });
+  }
+
+  /* 6 GANs: G fakes, D judges, G improves */
+  {
+    const cv = $('#m6c'), a = $('#m6a'), b = $('#m6b'), v = $('#m6v'), vr = $('#m6v rect'), vt = $('#m6v text');
+    defB(5, t => {
+      let x = 62, o = 0, second = t >= 2.2;
+      if (!second) { x = lerp(62, 104, E.io(seg(t, .9, 1.3))); o = seg(t, .1, .25) * (1 - seg(t, 1.9, 2.15)); }
+      else { x = lerp(62, 104, E.io(seg(t, 2.8, 3.2))); o = seg(t, 2.2, 2.35) * out(t); }
+      cv.setAttribute('transform', `translate(${x.toFixed(1)} 82)`); cv.style.opacity = o.toFixed(3);
+      a.setAttribute('stroke-dashoffset', (1 - seg(t, .2, .85)).toFixed(4)); a.style.opacity = second ? 0 : 1;
+      b.style.opacity = second ? 1 : 0; b.setAttribute('transform', `scale(${second ? E.back(seg(t, 2.3, 2.8)).toFixed(3) : 0})`);
+      const fake = t >= 1.35 && t < 2.15, real = t >= 3.3 && t < 7.8;
+      const vp = fake ? seg(t, 1.35, 1.55) : real ? seg(t, 3.3, 3.5) : 0;
+      vr.setAttribute('stroke', fake ? '#FFB3A7' : '#C9F2C7'); vt.setAttribute('fill', fake ? '#FFB3A7' : '#C9F2C7');
+      txt(vt, fake ? 'FAKE' : 'REAL?');
+      v.setAttribute('transform', `translate(96 136) rotate(-8) scale(${lerp(1.6, 1, E.out(vp)).toFixed(3)})`);
+      v.style.opacity = (fake ? Math.min(1, vp * 3) * (1 - seg(t, 1.95, 2.15)) : real ? Math.min(1, vp * 3) * out(t) : 0).toFixed(3);
+    });
+  }
+
+  /* 7 Hands-On GenAI: prompt, then the image resolves top to bottom */
+  {
+    const q = $('#m7q'), cr = $('#m7cr'), scan = $('#m7scan'), lab = $('#m7t'), ng = $('#m7n'), Q = 'a cat on the moon';
+    const noise = [];
+    for (let r = 0; r < 8; r++) for (let c = 0; c < 9; c++) noise.push(mk('rect', { x: 33 + c * 12.2, y: 34 + r * 12, width: 12.2, height: 12, fill: '#B35F14' }, ng));
+    defB(6, t => {
+      const n = t >= 7.6 ? 0 : Math.round(seg(t, .2, 1.4) * Q.length);
+      txt(q, Q.slice(0, n) + (t < 1.6 && Math.floor(t * 2.4) % 2 === 0 ? '|' : ''));
+      const p = t >= 7.35 ? 1 - seg(t, 7.35, 7.8) : E.io(seg(t, 1.8, 4.4));
+      cr.setAttribute('height', (96 * p).toFixed(2));
+      scan.setAttribute('y', (34 + 96 * p - 1).toFixed(2)); scan.style.opacity = p > 0 && p < 1 ? 1 : 0;
+      txt(lab, p >= 1 ? 'done · 50/50 steps' : `denoising ${Math.round(50 * p)}/50`);
+      const fr = Math.floor(t * 12);
+      noise.forEach((e, i) => { const h = hash(i * 31 + fr * 977); const f = h > .66 ? '#C77A2E' : h > .33 ? '#9C5212' : '#B86A22'; if (e._f !== f) { e._f = f; e.setAttribute('fill', f); } });
+    });
+  }
+
+  /* 8 Hands-On LLMs: tokens, embeddings, attention, next token */
+  {
+    const vg = $('#m8v'), pg = $('#m8p'), a1 = $('#m8a1'), a2 = $('#m8a2');
+    const pal = ['#F4D35E', '#EE964B', '#F95738', '#0D3B66', '#3F88C5', '#A2D6F9'];
+    const cols = [40, 92, 144].map((x, ci) => Array.from({ length: 5 }, (_, k) => mk('rect', { x: x - 10, y: 60 + k * 10, width: 20, height: 9, rx: 1.5 }, vg)));
+    const bars = [['on', .62], ['down', .21], ['by', .09]].map(([w, p], k) => {
+      const y = 124 + k * 11;
+      mk('text', { x: 18, y: y + 7 }, pg).textContent = w;
+      const r = mk('rect', { x: 52, y: y, width: 0, height: 8, rx: 2, fill: k ? '#B79A6B' : '#C0392B' }, pg);
+      const tx = mk('text', { x: 0, y: y + 7 }, pg); tx.textContent = '';
+      return { r, tx, p };
+    });
+    const head = mk('text', { x: 18, y: 119, 'font-size': 8 }, pg); head.textContent = 'next token';
+    defB(7, t => {
+      const fr = Math.floor(t * 4);
+      cols.forEach((col, ci) => col.forEach((e, k) => {
+        const p = seg(t, .4 + ci * .4, .7 + ci * .4);
+        e.setAttribute('fill', pal[Math.floor(hash(ci * 50 + k * 7 + fr * 13) * pal.length)]);
+        e.style.opacity = (p * out(t)).toFixed(3);
+      }));
+      a1.setAttribute('stroke-dashoffset', (1 - seg(t, 1.9, 2.5)).toFixed(4)); a1.style.opacity = out(t);
+      a2.setAttribute('stroke-dashoffset', (1 - seg(t, 2.2, 2.8)).toFixed(4)); a2.style.opacity = out(t);
+      bars.forEach((b, k) => { const w = 60 * b.p / .62 * E.out(seg(t, 3.1 + k * .15, 3.8 + k * .15)); b.r.setAttribute('width', w.toFixed(1)); b.tx.setAttribute('x', (56 + w).toFixed(1)); b.tx.style.opacity = seg(t, 3.6 + k * .15, 3.9 + k * .15) * out(t); b.r.style.opacity = out(t); });
+      pg.children[0].style.opacity = pg.children[3].style.opacity = pg.children[6].style.opacity = (seg(t, 3.0, 3.3) * out(t)).toFixed(3);
+      head.style.opacity = (seg(t, 3.0, 3.3) * out(t)).toFixed(3);
+    });
+  }
+
+  /* 9 Hands-On ML: the decision boundary finds its place */
+  {
+    const pg = $('#m9p'), ln = $('#m9l'), hp = $('#m9h'), acc = $('#m9a'), chip = $('#m9c');
+    const A = [[38, 96], [52, 110], [46, 80], [66, 100], [60, 118], [78, 112], [34, 116], [70, 84]];
+    const B = [[110, 30], [126, 44], [140, 26], [104, 50], [132, 62], [146, 48], [118, 18], [96, 36]];
+    A.forEach(([x, y]) => mk('circle', { cx: x, cy: y, r: 4.5, fill: '#2F6FDB', stroke: '#fff', 'stroke-width': 1.2 }, pg));
+    B.forEach(([x, y]) => mk('rect', { x: x - 4, y: y - 4, width: 8, height: 8, rx: 1.5, fill: '#E4572E', stroke: '#fff', 'stroke-width': 1.2 }, pg));
+    const cx = 88, cy = 68;
+    defB(8, t => {
+      let th;
+      if (t >= 7.3) th = lerp(45, -60, E.io(seg(t, 7.3, 7.9)));
+      else { const p = seg(t, .8, 2.4); th = lerp(-60, 45, p >= 1 ? 1 : 1 - Math.exp(-5 * p) * Math.cos(9 * p)); }
+      const r = th * Math.PI / 180, dx = Math.cos(r), dy = Math.sin(r), L = 200;
+      ln.setAttribute('x1', cx - dx * L); ln.setAttribute('y1', cy - dy * L); ln.setAttribute('x2', cx + dx * L); ln.setAttribute('y2', cy + dy * L);
+      const nx = -dy, ny = dx;   // shade the side the blue class should sit on
+      hp.setAttribute('d', `M${cx - dx * L} ${cy - dy * L}L${cx + dx * L} ${cy + dy * L}L${cx + dx * L + nx * L} ${cy + dy * L + ny * L}L${cx - dx * L + nx * L} ${cy - dy * L + ny * L}Z`);
+      let ok = 0;   // real accuracy of the current line on these 16 points
+      A.forEach(([x, y]) => { if ((x - cx) * nx + (y - cy) * ny > 0) ok++; });
+      B.forEach(([x, y]) => { if ((x - cx) * nx + (y - cy) * ny < 0) ok++; });
+      const a = Math.round(ok / 16 * 100);
+      txt(acc, `accuracy ${a}%`);
+      chip.setAttribute('transform', `translate(88 145) scale(${(1 + .12 * Math.sin(Math.PI * seg(t, 2.4, 2.8))).toFixed(3)}) translate(-88 -145)`);
+    });
+  }
+
+  /* 10 LLM Engineer's Handbook: a packet hops along the pipeline */
+  {
+    const bx = $$('#m10 .bx rect'), dot = $('#m10d'), chip = $('#m10c');
+    const HOP = [[[80, 34], [96, 34]], [[129, 54], [129, 78]], [[96, 98], [80, 98]]], TT = [.2, 1.1, 2.0, 2.9];
+    defB(9, t => {
+      let vis = 0, x = 0, y = 0;
+      for (let i = 0; i < 3; i++) { const p = seg(t, TT[i + 1] - .6, TT[i + 1]); if (p > 0 && p < 1) { vis = 1; x = lerp(HOP[i][0][0], HOP[i][1][0], E.io(p)); y = lerp(HOP[i][0][1], HOP[i][1][1], E.io(p)); } }
+      dot.setAttribute('cx', x.toFixed(1)); dot.setAttribute('cy', y.toFixed(1)); dot.style.opacity = vis;
+      bx.forEach((r, i) => r.setAttribute('fill', t >= TT[i] && t < 7.5 ? ['#FFE14D', '#BFE6E8', '#F7B6C8', '#CDEBC5'][i] : '#fff'));
+      const cp = seg(t, 3.3, 3.6);
+      chip.setAttribute('transform', `translate(88 140) scale(${E.back(cp).toFixed(3)}) translate(-88 -140)`);
+      chip.style.opacity = cp > 0 ? out(t) : 0;
+    });
+  }
+
+  /* 11 Math for ML: a matrix bends the grid */
+  {
+    const g = $('#m11g'), vi = $('#m11i'), vj = $('#m11j'), lab = $('#m11t'), cx = 88, cy = 66, s = 18;
+    const lines = [];
+    for (let k = -5; k <= 5; k++) { lines.push([[k, -5], [k, 5], mk('line', {}, g)]); lines.push([[-5, k], [5, k], mk('line', {}, g)]); }
+    const M = [[.95, .6], [-.35, 1.05]];
+    defB(10, t => {
+      const p = t < 5 ? E.io(seg(t, .8, 2.8)) : 1 - E.io(seg(t, 5.0, 7.0));
+      const a = lerp(1, M[0][0], p), b = lerp(0, M[0][1], p), c = lerp(0, M[1][0], p), d = lerp(1, M[1][1], p);
+      const tr = ([x, y]) => [cx + (a * x + b * y) * s, cy - (c * x + d * y) * s];
+      lines.forEach(([u, v, el]) => { const P = tr(u), Q = tr(v); el.setAttribute('x1', P[0].toFixed(1)); el.setAttribute('y1', P[1].toFixed(1)); el.setAttribute('x2', Q[0].toFixed(1)); el.setAttribute('y2', Q[1].toFixed(1)); });
+      const I = tr([2, 0]), J = tr([0, 2]);
+      vi.setAttribute('x1', cx); vi.setAttribute('y1', cy); vi.setAttribute('x2', I[0].toFixed(1)); vi.setAttribute('y2', I[1].toFixed(1));
+      vj.setAttribute('x1', cx); vj.setAttribute('y1', cy); vj.setAttribute('x2', J[0].toFixed(1)); vj.setAttribute('y2', J[1].toFixed(1));
+      txt(lab, p > .02 ? `A = [${a.toFixed(2)} ${b.toFixed(2)}; ${c.toFixed(2)} ${d.toFixed(2)}]` : 'A = I');
+    });
+  }
+
+  /* 12 NLP with Transformers: "it" attends to "animal" */
+  {
+    const lg = $('#m12l'), wg = $('#m12w'), W = ['The', 'animal', "didn't", 'cross', 'it', 'tired'];
+    const yy = k => 12 + k * 21, XL = 58, XR = 116;
+    const left = W.map((w, k) => { const e = mk('text', { x: XL, y: yy(k) + 3.5, 'text-anchor': 'end', fill: '#fff' }, wg); e.textContent = w; return e; });
+    const right = W.map((w, k) => { const e = mk('text', { x: XR, y: yy(k) + 3.5, fill: '#fff' }, wg); e.textContent = w; return e; });
+    const hl = mk('rect', { rx: 4, fill: '#FFD23F' }, lg);
+    const Q = [{ q: 4, w: [.04, .66, .04, .07, .12, .07], at: .5 }, { q: 5, w: [.03, .52, .04, .06, .3, .05], at: 4.0 }];
+    const ls = W.map(() => mk('line', { stroke: '#FFFFFF', 'stroke-linecap': 'round', pathLength: 1, 'stroke-dasharray': '1 1' }, lg));
+    defB(11, t => {
+      const i = t >= 4.0 && t < 7.8 ? 1 : 0, cur = Q[i];
+      const grow = E.out(seg(t, cur.at, cur.at + .8)), fade = i === 0 ? 1 - seg(t, 3.6, 3.95) : out(t);
+      const q = cur.q, y1 = yy(q);
+      ls.forEach((l, k) => {
+        const w = cur.w[k];
+        l.setAttribute('x1', XL + 4); l.setAttribute('y1', y1); l.setAttribute('x2', XR - 4); l.setAttribute('y2', yy(k));
+        l.setAttribute('stroke-width', (.6 + 7 * w).toFixed(2)); l.setAttribute('stroke-opacity', ((.25 + .75 * w) * fade).toFixed(3));
+        l.setAttribute('stroke-dashoffset', (1 - grow).toFixed(4));
+      });
+      left.forEach((e, k) => e.setAttribute('fill', k === q && fade > .05 ? '#FFD23F' : '#fff'));
+      left.forEach((e, k) => e.setAttribute('font-weight', k === q ? 800 : 600));
+      const hp = seg(t, cur.at + .9, cur.at + 1.2) * fade;
+      hl.setAttribute('x', XR - 4); hl.setAttribute('y', yy(1) - 8); hl.setAttribute('width', 48); hl.setAttribute('height', 16);
+      hl.style.opacity = hp.toFixed(3);
+      right[1].setAttribute('fill', hp > .5 ? '#2B57A6' : '#fff');
+    });
+  }
+
+  /* footer: a word wave runs 1 to n, follow line then help line, nonstop; the calendar books a slot every second */
+  {
+    const L = $$('.ft .l .w'), R = $$('.ft .r .w'), ring = $('#nameRing'), phR = $('#phR');
+    const calG = $('#calG'), calH = $('#calH'), calK = $('#calK'), calR = $$('#calR path');
+    const CX = [10.5, 17, 23.5, 30], CY = [20.5, 26, 31.5];
+    CY.forEach(y => CX.forEach(x => mk('rect', { x: x - 2.2, y: y - 1.8, width: 4.4, height: 3.6, rx: 1, fill: '#141414', 'fill-opacity': .22 }, calG)));
+    const HOPS = [5, 2, 7, 9, 4, 11, 1, 10].map(i => [CX[i % 4], CY[Math.floor(i / 4)]]);
+    def(t => {
+      L.forEach((w, j) => { if (j) w.style.transform = `translateY(${(-4 * bump(t, 1.65 + j * .08, .38, 2)).toFixed(2)}px)`; });
+      R.forEach((w, j) => { w.style.transform = `translateY(${(-4 * bump(t, .2 + j * .08, .38, 2)).toFixed(2)}px)`; });
+      // calendar: the booked day hops to a new date each second and gets a tick
+      const k = Math.floor(md(t, 8)), u = md(t, 1), a = HOPS[(k + 7) % 8], b = HOPS[k], h = E.io(seg(u, 0, .28));
+      calH.setAttribute('transform', `translate(${lerp(a[0], b[0], h).toFixed(2)} ${(lerp(a[1], b[1], h) - 4 * Math.sin(Math.PI * h)).toFixed(2)})`);
+      calK.setAttribute('stroke-dashoffset', (1 - E.out(seg(u, .3, .55))).toFixed(4));
+      calR.forEach((e, i) => e.setAttribute('transform', `rotate(${(10 * Math.sin(Math.PI * h) * (i ? -1 : 1)).toFixed(1)} ${i ? 27 : 13} 7)`));
+      L[0].style.transform = `translateY(${(-2 * Math.sin(Math.PI * h)).toFixed(2)}px)`;
+      // profile ring turns; the name ring redraws like the SKIP ring
+      phR.setAttribute('transform', `rotate(${(t * 45).toFixed(2)} 29 29)`);
+      mark(ring, t, 3.4);
+    });
+  }
+
+  /* clock */
+  const render = t => { for (const f of tiles) f(t); };
+  const CAP = new URLSearchParams(location.search).has('capture');
+  const holder = $('#holder'), poster = $('#poster'), playBtn = $('#playBtn');
+  if (CAP) document.body.classList.add('capture');
+  const fit = () => { const sc = CAP ? 1 : Math.min(1, holder.clientWidth / 1080); poster.style.transform = `scale(${sc})`; holder.style.height = (1350 * sc) + 'px'; };
+  fit(); addEventListener('resize', fit);
+  window.__render = render; window.__ready = false;
+  Promise.all([document.fonts.load('400 92px "Luckiest Guy"'), document.fonts.load('800 19px Archivo'), document.fonts.load('700 9px "JetBrains Mono"')])
+    .catch(() => {}).then(() => document.fonts.ready).then(() => { render(HERO); window.__ready = true; });
+  render(HERO);
+  if (CAP) return;
+  let playing = true, cur = HERO, base = performance.now() - HERO * 1000;
+  try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) playing = false; } catch (e) {}
+  const label = () => { playBtn.textContent = playing ? 'Pause' : 'Play'; }; label();
+  const loop = now => { if (playing) { cur = ((now - base) / 1000) % T; render(cur); } requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+  playBtn.addEventListener('click', () => { playing = !playing; if (playing) base = performance.now() - cur * 1000; label(); });
+  $('#restartBtn').addEventListener('click', () => { playing = true; base = performance.now(); label(); });
+})();
+</script>
+</body>
+</html>
