@@ -1,6 +1,8 @@
 # Opus 5.5 Motion Graphics
 
-## How to make one
+![12 AI/ML book covers, each acting out its idea](motion-graphics/ai-ml-books.gif)
+
+## How to create one
 
 1. Pick one topic and a short list (here: 12 books).
 2. Use real images, not AI fakes (covers by ISBN).
@@ -15,8 +17,6 @@
 Starter prompt + render command → [motion-graphics/](motion-graphics)
 
 ## What each cover does
-
-![12 AI/ML book covers, each acting out its idea](motion-graphics/ai-ml-books.gif)
 
 `1080×1350` · `8-second loop` · `one HTML file` · `no animation library`
 
