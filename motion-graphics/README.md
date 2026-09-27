@@ -1,6 +1,8 @@
 # Motion Graphics with Claude Code
 
-![12 AI/ML book covers, each acting out its idea](ai-ml-books.gif)
+[![12 AI/ML book covers, each acting out its idea](ai-ml-books.png)](ai-ml-books.gif)
+
+Click the image to see it move.
 
 One HTML file. SVG + JavaScript. Rendered to a GIF.
 
@@ -25,11 +27,12 @@ Each cover flips to show one animation of its main idea,
 then flips back. 8-second seamless loop.
 ```
 
-## Render the GIF
+## Render the GIF + PNG
 
 ```
 npm i playwright-core
 node render.mjs gif ai-ml-books.html ai-ml-books 1.6
+node render.mjs stills ai-ml-books.html stills 1.6
 ```
 
 Needs Google Chrome + ffmpeg. The Chrome path in `render.mjs` is for macOS.
@@ -37,7 +40,8 @@ Needs Google Chrome + ffmpeg. The Chrome path in `render.mjs` is for macOS.
 ## Files
 
 - `ai-ml-books.html` → the animation (open it in Chrome)
-- `render.mjs` → HTML to GIF + MP4
+- `ai-ml-books.png` → still frame
+- `render.mjs` → HTML to GIF + MP4, or PNG stills
 - `covers/` → the 12 real covers
 
 The books themselves → [../books](../books)

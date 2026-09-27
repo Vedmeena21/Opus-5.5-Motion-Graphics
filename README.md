@@ -1,6 +1,8 @@
 # Opus 5.5 Motion Graphics
 
-![12 AI/ML book covers, each acting out its idea](motion-graphics/ai-ml-books.gif)
+[![12 AI/ML book covers, each acting out its idea](motion-graphics/ai-ml-books.png)](motion-graphics/ai-ml-books.gif)
+
+Click the image to see it move.
 
 ## How to create one
 
@@ -50,6 +52,7 @@ Buy links and official code repos → [books/](books)
 ```
 motion-graphics/
   ai-ml-books.html   open in Chrome, has Play / Pause
+  ai-ml-books.png    still frame
   ai-ml-books.gif    the rendered loop
   render.mjs         HTML → GIF + MP4
   covers/            12 real covers
