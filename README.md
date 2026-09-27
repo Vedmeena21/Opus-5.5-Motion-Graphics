@@ -1,12 +1,21 @@
 # Opus 5.5 Motion Graphics
 
+## Make your own in 4 steps
+
+1. Pick one idea to animate, like a grid that bends.
+2. Name every state: cover, flip, animate, flip back.
+3. Ask for one HTML file, then fix it frame by frame.
+4. Render it to a GIF with Playwright and ffmpeg.
+
+Full walkthrough + starter prompt → [motion-graphics/](motion-graphics)
+
+## What each cover does
+
 ![12 AI/ML book covers, each acting out its idea](motion-graphics/ai-ml-books.gif)
 
 `1080×1350` · `8-second loop` · `one HTML file` · `no animation library`
 
 Built with Opus 5.5 in Claude Code. Every cover is the real one. Each flips open, animates the idea its book teaches, and flips back.
-
-## What each cover does
 
 | # | Book | What moves |
 |---|---|---|
@@ -24,15 +33,6 @@ Built with Opus 5.5 in Claude Code. Every cover is the real one. Each flips open
 | 12 | NLP with Transformers | "it" attends to "animal" |
 
 Buy links and official code repos → [books/](books)
-
-## Make your own in 4 steps
-
-1. Pick one idea to animate, like a grid that bends.
-2. Name every state: cover, flip, animate, flip back.
-3. Ask for one HTML file, then fix it frame by frame.
-4. Render it to a GIF with Playwright and ffmpeg.
-
-Full walkthrough + starter prompt → [motion-graphics/](motion-graphics)
 
 ## Caught in review
 
