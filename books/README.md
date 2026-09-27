@@ -35,3 +35,5 @@ The 12 books in the [motion graphic](../motion-graphics). Two are free to read o
 | LLM Engineer's Handbook | Paul Iusztin, Maxime Labonne | [Amazon](https://www.amazon.com/dp/1836200072) | [PacktPublishing/LLM-Engineers-Handbook](https://github.com/PacktPublishing/LLM-Engineers-Handbook) |
 
 Code links are each book's official companion repo.
+
+Hands-On ML is the 2025 PyTorch edition. Have the TensorFlow edition? Its code is [ageron/handson-ml3](https://github.com/ageron/handson-ml3).
